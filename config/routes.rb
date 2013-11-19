@@ -6,6 +6,8 @@ Bootstrap::Application.routes.draw do
 
 #resources :authentications
 
+  
+  resources :posts, only: [:create, :destroy]
 
   get "users/show"
 

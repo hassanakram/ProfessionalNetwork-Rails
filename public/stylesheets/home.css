@@ -57,6 +57,7 @@ img{
 	position: fixed;
 	top: 0;
 	width: 100%;
+	z-index: 10001
 }
 
 
@@ -526,7 +527,7 @@ div.about_sender a{
 	color: #fff;
 	border-color: #1b5480;
 	display: inline-block;
-	margin: 6px 5px 0 35px;
+	margin: 6px 5px 0 17px;
 	float: left;
 }
 

@@ -8,6 +8,140 @@
 
 }
 
+
+.activity
+{
+	padding: 0 0;
+	background-color: white;
+	background-image: -webkit-linear-gradient(left, #EDEDED 0%,lightGrey 50%,#EDEDED 100%);
+	background-image: -moz-linear-gradient(left, #EDEDED 0%,lightGrey 50%,#EDEDED 100%);
+	background-image: -o-linear-gradient(left, #EDEDED 0%,lightGrey 50%,#EDEDED 100%);
+	background-image: linear-gradient(left, #EDEDED 0%,lightGrey 50%,#EDEDED 100%);
+	-moz-box-shadow: inset 0 0 0 white,0 0 0 white,inset -9999px 0 0 white;
+	box-shadow: inset 0 0 0 white,0 0 0 white,inset -9999px 0 0 white;
+	-webkit-background-origin: border;
+	-moz-background-origin: border;
+	-ms-background-origin: border-box;
+	-o-background-origin: border-box;
+	background-origin: border-box;
+	border: 0 solid transparent;
+	border-bottom-width: 1px;
+	margin-top: 50px;
+	margin-bottom: 50px;
+	margin-right: -449px;
+	margin-left: 186px;
+}
+
+.createPost .field .post_text_area
+{
+	height: 45px;
+	width: 584px;
+	top: 0;
+	background: #FDFDFD;
+	vertical-align: middle;
+	-webkit-border-radius: 2px;
+	-moz-border-radius: 2px;
+	-ms-border-radius: 2px;
+	-o-border-radius: 2px;
+	border-radius: 2px;
+	padding: 5px 6px 4px;
+	-webkit-box-shadow: 0 0 3px rgba(0,0,0,0.1) inset;
+	-moz-box-shadow: 0 0 3px rgba(0,0,0,0.1) inset;
+	box-shadow: 0 0 3px rgba(0,0,0,0.1) inset;
+	border: 1px solid #C1C1C1;
+	font-size: 13px;
+	line-height: 17px;
+	color: #333;
+	padding: 9px 10px;
+	overflow: hidden;
+	position: relative;
+	-webkit-transition-duration: 0.2s;
+	-moz-transition-duration: 0.2s;
+	-o-transition-duration: 0.2s;
+	transition-duration: 0.2s;
+	-webkit-transition-property: height, top;
+	-moz-transition-property: height, top;
+	-o-transition-property: height, top;
+	transition-property: height, top;
+	-webkit-transition-timing-function: ease-in-out;
+	-moz-transition-timing-function: ease-in-out;
+	-o-transition-timing-function: ease-in-out;
+	transition-timing-function: ease-in-out;
+	margin-left: 40px;
+}
+
+.createPost .accept
+{
+	float: right;
+	margin-right: 120px;
+	margin-top: 10px;
+}
+
+.microposts .content
+{
+	color: #333;
+	display: inline;
+	font-family: Helvetica, FreeSans, 'Liberation Sans', Helmet, Arial, sans-serif;
+	font-size: 13px;
+	font-style: normal;
+	font-weight: normal;
+	margin-top: 10px;
+}
+.microposts .timestamp
+{
+	color: #8B8B8B;
+	font-size: 13px;
+	display: inline;
+	font-style: normal;
+	font-weight: normal;
+	margin-top: 10px;
+}
+
+.microposts .name_style
+{
+	font-family: Helvetica, FreeSans, 'Liberation Sans', Helmet, Arial, sans-serif;
+	font-size: 13px;
+	font-style: normal;
+	font-weight: normal;
+}
+
+
+.activity h2
+{
+	background: #333;
+	color: white;
+	font-size: 13px;
+	line-height: 17px;
+	font-weight: bold;
+	padding: 7.5px 20px;
+	display: -moz-inline-stack;
+	display: inline-block;
+	vertical-align: middle;
+	zoom: 1;
+	padding-left: 10px;
+	padding-right: 26px;
+}
+
+
+.microposts li
+{
+	margin-top: 20px;
+	border-top-color: #EEE;
+	border-top-style: solid;
+	border-top-width: 1px;
+	vertical-align:middle;
+	margin-bottom: 30px;
+}
+
+
+.microposts
+{
+	margin-top: 50px;
+	margin-left: 50px;
+}
+
+
+
 .relation_status
 {
 	

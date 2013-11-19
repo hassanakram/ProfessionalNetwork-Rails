@@ -6,6 +6,17 @@ $(document).ready(function(){
 	$('#networks_sub_nav').hide();
 	$('#interests_sub_nav').hide();
 	$('#services_sub_nav').hide();
+	
+	
+
+	$('#messages').mouseenter(function(){
+		$('#invitations_count').hide();
+	});
+
+	$('#messages').mouseleave(function(){
+		$('#invitations_count').show();
+	});
+
 
 
 	$('#profile_pic').mouseenter(function(){

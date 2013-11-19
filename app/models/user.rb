@@ -2,6 +2,7 @@ class User < ActiveRecord::Base
   has_many :authorizations
   has_many :user_roles, :through => :authorizations
 
+  has_many :posts , dependent: :destroy
   has_many :friendships 
   has_many :friends, :through => :friendships
 

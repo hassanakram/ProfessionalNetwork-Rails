@@ -15,45 +15,81 @@
             
             <div class="photo_area">
           		 <%= image_tag @user.image_url(:thumb).to_s , :class => "profile_pic"%>
-			</div>
+			      </div>
           	
           	<div class="name">
-          		<b> <%= link_to @user.userFname, @user , :class=>"name_style"%> </b>
+          		<b> <%= link_to @user.userFname + " " + @user.userLname, @user , :class=>"name_style"%> </b>
           	</div>
 
 
-			    <p id="notice"><%= notice %></p>
-			<% if user_signed_in? %>
-				<% if current_user != @user %>
-				<div class="relation_status">
-					<% if current_user.friend_with? @user  %>
-					     <%= button_to "Remove Friend", {:controller => :friendships, :action => :destroy, :user_id => @user }, :method => :delete ,:class => "reject" %>
-					<% elsif current_user.invited? @user  %>
-					     
-					     <%= button_to "Cencel Request", {:controller => :friendships, :action => :destroy, :user_id => @user }, :method => :delete ,:class => "reject" %>
-					<% elsif @user.invited? current_user  %>
-					     <%= button_to "Accpet", {:controller => :friendships, :action => :update, :user_id => @user  }, :method => :put ,:class => "accept" %>
-					     <%= button_to "Decline", {:controller => :friendships, :action => :destroy, :user_id => @user }, :method => :delete ,:class => "reject" %>
+			      <p id="notice"><%= notice %></p>
+        			<% if user_signed_in? %>
+        				<% if current_user != @user %>
+        				<div class="relation_status">
+        					<% if current_user.friend_with? @user  %>
+        					     <%= button_to "Remove Friend", {:controller => :friendships, :action => :destroy, :user_id => @user }, :method => :delete ,:class => "reject" %>
+        					<% elsif current_user.invited? @user  %>
+        					     
+        					     <%= button_to "Cencel Request", {:controller => :friendships, :action => :destroy, :user_id => @user }, :method => :delete ,:class => "reject" %>
+        					<% elsif @user.invited? current_user  %>
+        					     <%= button_to "Accpet", {:controller => :friendships, :action => :update, :user_id => @user  }, :method => :put ,:class => "accept" %>
+        					     <%= button_to "Decline", {:controller => :friendships, :action => :destroy, :user_id => @user }, :method => :delete ,:class => "reject" %>
 
 
 
-					<% else %>
-					     <%= button_to "Add Friend", friendships_path( :user_id => @user), :method => :post,:class => "accept" %>
-					<% end %>
-				</div>
-				<% end %>
-			<% end %>
-
-
+        					<% else %>
+        					     <%= button_to "Add Friend", friendships_path( :user_id => @user), :method => :post,:class => "accept" %>
+        					<% end %>
+        				</div>
+        				<% end %>
+        			<% end %>
           </div>
           
-          <div id="results">
-            <ul>
-              
-            </ul>
+
+          <div class="activity">
+            <h2>Activity</h2>
+          <div class="createPost">
+            <% if current_user == @user %>
+                <%= form_for(@post) do |f| %>
+                  
+                  <div class="field">
+                    <%= f.text_area :content, placeholder: "Share an update..." ,:class=>"post_text_area" %>
+                  </div>
+                  
+                  <%= f.submit "Share", class: "accept" %>
+                <% end %>
+            <%end%>
           </div>
-        </div>
+
+          <ol class="microposts">  
+            <% @postsbyuser.each do |post| %>
+              <li>
+
+                  
+
+                   <%= link_to @user.userFname + " " + @user.userLname , @user , :class=>"name_style"%> 
+                 </br>
+
+                <span class="content"><%= post.content %></span>
+              </br>
+                <span class="timestamp">
+                  Posted <%= time_ago_in_words(post.created_at) %> ago.
+                </span>
+              </li>
+            <%end%>
+          </ol>
       </div>
+          
+        </div>
+
+
+
+        
+
+      </div>
+      
+
+
     </div>
   </section>
 
