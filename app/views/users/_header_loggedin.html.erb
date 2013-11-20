@@ -49,7 +49,7 @@
 												</a>
 												<div class="about_sender">
 													<p>
-														<%= link_to u.userFname, u %>
+														<%= link_to u.userFname+" "+u.userLname , u %>
 													</p>
 													<p>
 														Professional
@@ -89,7 +89,8 @@
 													<%= image_tag current_user.image_url(:small).to_s %>
 												</span>
 												<span id="name" class="act_name">
-													<%= link_to current_user.userFname, '/home/index' , :class=>"nav-link" %>
+													
+													<%= link_to current_user.userFname+" "+current_user.userLname , current_user %>
 												</span>
 												<span id="signout" class="act_action">
 													<%= link_to "Sign Out", '/users/sign_out'%>

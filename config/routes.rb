@@ -7,8 +7,7 @@ Bootstrap::Application.routes.draw do
 #resources :authentications
 
   
-  resources :posts, only: [:create, :destroy]
-
+  
   get "users/show"
 
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" ,:registrations => "registrations" }
@@ -21,6 +20,9 @@ Bootstrap::Application.routes.draw do
 
 
   #resources :feedbacks
+
+  resources :posts, only: [:create,:index , :destroy]
+
 
   #devise_for :admin_users, ActiveAdmin::Devise.config
 

@@ -1,5 +1,7 @@
 class UsersController < Devise::RegistrationsController
   
+  #include ActiveModel::ForbiddenAttributesProtection
+
   before_filter :authenticate_user!
 
   def index
@@ -14,7 +16,7 @@ class UsersController < Devise::RegistrationsController
   # GET /users/1
   # GET /users/1.json
   
-before_filter :authenticate_user!
+
   def show
     @user= User.find(params[:id])
     @post = current_user.posts.build if signed_in?

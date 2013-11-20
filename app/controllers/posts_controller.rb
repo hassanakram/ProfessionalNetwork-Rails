@@ -2,12 +2,12 @@ class PostsController < ApplicationController
   
 
   def create
-  	@post = current_user.posts.build(post_params)
+  	@post = current_user.posts.build(params[:post])
     if @post.save
       flash[:success] = "post created!"
       redirect_to root_url
     else
-      render 'home/index'
+      render 'home/sorryy'
     end
   end
 
@@ -17,9 +17,5 @@ class PostsController < ApplicationController
   def index
   end
 
-private
-  def post_params
-    params.require(:post).permit(:content)
-   end
 
 end

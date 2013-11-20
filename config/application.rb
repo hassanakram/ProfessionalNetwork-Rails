@@ -15,7 +15,7 @@ module Bootstrap
     config.paths['app/views'] << "app/views/devise"
     
 
-    config.active_record.whitelist_attributes = false
+    #config.active_record.whitelist_attributes = false
     
     # Custom directories with classes and modules you want to be autoloadable.
     # config.autoload_paths += %W(#{config.root}/extras)

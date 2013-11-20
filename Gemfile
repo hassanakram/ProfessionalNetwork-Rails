@@ -56,7 +56,7 @@ gem 'omniauth-facebook'
 gem 'omniauth-github'
 gem 'oa-core'
 gem 'omniauth'
-gem "strong_parameters"
+#gem "strong_parameters"
 gem 'amistad'
 gem "rmagick"
 gem 'carrierwave'
