@@ -4,6 +4,6 @@ class CommentsController < ApplicationController
 	    @comment = @post.comments.build(params[:comment])
 	    @comment.user = current_user
 	    @comment.save
-	    redirect_to user_path(current_user)
+	    redirect_to :back
 	end
 end

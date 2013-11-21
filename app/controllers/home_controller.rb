@@ -25,9 +25,9 @@ class HomeController < ApplicationController
   def update
     inviter = User.find_by_id(params[:id])
     if current_user.approve inviter
-      redirect_to root_path, :notice => "Successfully confirmed friend!"
+      redirect_to :back, :notice => "Successfully confirmed friend!"
     else
-      redirect_to root_path, :notice => "Sorry! Could not confirm friend!"
+      redirect_to :back, :notice => "Sorry! Could not confirm friend!"
     end
   end
 
