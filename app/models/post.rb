@@ -7,5 +7,8 @@ class Post < ActiveRecord::Base
 	validates :user_id, presence: true
 
 
-  attr_accessible :content, :user_id
+  attr_accessible :content, :user_id , :image , :public
+
+  mount_uploader :image, ImageUploader
+
 end

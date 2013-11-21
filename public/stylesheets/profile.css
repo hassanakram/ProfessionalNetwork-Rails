@@ -8,6 +8,11 @@
 
 }
 
+.microposts .post_image
+{
+	width: 700px;
+	height: 500px;
+}
 
 .activity
 {
@@ -77,6 +82,18 @@
 	margin-top: 10px;
 }
 
+.clearfix
+{
+	margin-top: 10px;
+	margin-left: 80px;
+}
+
+#industryChooser-employeeCompany-employedProfileForm
+{
+	margin-top: 10px;
+	margin-left: 80px;	
+}
+
 .microposts .content
 {
 	color: #333;
@@ -86,6 +103,7 @@
 	font-style: normal;
 	font-weight: normal;
 	margin-top: 10px;
+	line-height: 3;
 }
 .microposts .timestamp
 {
@@ -120,6 +138,7 @@
 	zoom: 1;
 	padding-left: 10px;
 	padding-right: 26px;
+	margin-bottom: 20px;
 }
 
 
@@ -155,11 +174,51 @@
 
 .name
 {
-	font-size: 25px;
+	font-family: Helvetica, FreeSans, 'Liberation Sans', Helmet, Arial, sans-serif;
+	font-style: normal;
+	font-weight: bold;
+	font-size: 24px;
 	font-family: cursive;
 	padding-top: 30px;
 }
 
+.personal_info .uni
+{
+	font-size: 16px;
+	line-height: 20px;
+	color: #333;
+	font-weight: normal;
+	padding-top: 1px;
+	padding-bottom: 1px;
+	display: inline;
+}
+
+.member-connections
+{
+	font-size: 11px;
+	color: #999;
+	float: right;
+	margin-top: 170px;
+	margin-right: 10px;
+	line-height: 15px;
+	vertical-align: bottom;
+	text-align: right;
+}
+
+.member-connections  .connections-link
+{
+	font-size: 20px;
+	text-decoration: none;
+}
+
+.personal_info .country_etc
+{
+	font-size: 13px;
+	line-height: 17px;
+	color: #666;
+	font-weight: normal;
+	text-decoration: none;
+}
 
 
 .result {

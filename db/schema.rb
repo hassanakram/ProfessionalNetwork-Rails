@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131119184818) do
+ActiveRecord::Schema.define(:version => 20131120033530) do
 
   create_table "advancesearches", :force => true do |t|
     t.string   "keywords"
@@ -80,6 +80,8 @@ ActiveRecord::Schema.define(:version => 20131119184818) do
     t.integer  "user_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.string   "image"
+    t.string   "public"
   end
 
   add_index "posts", ["user_id", "created_at"], :name => "index_posts_on_user_id_and_created_at"

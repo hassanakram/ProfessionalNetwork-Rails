@@ -18,8 +18,21 @@
 			      </div>
           	
           	<div class="name">
-          		<b> <%= link_to @user.userFname + " " + @user.userLname, @user , :class=>"name_style"%> </b>
+          		<b> <%= @user.userFname + " " + @user.userLname %> </b>
           	</div>
+
+            <div class="personal_info">
+              <div class="uni">Student at <%= @user.University%> </div> </br>
+              <div class="country_etc"> <%= @user.country %> | <%= @user.Industry %> </div>
+            </div>
+
+            <div class="member-connections">
+              <strong>
+                <a href="/home/default" class="connections-link"> <%=@user.friends.count %> </a> </br>
+              </strong>
+              connections
+            </div>
+
 
 
 			      <p id="notice"><%= notice %></p>
@@ -56,26 +69,89 @@
                     <%= f.text_area :content, placeholder: "Share an update..." ,:class=>"post_text_area" %>
                   </div>
                   
+                  <div class="clearfix">
+                        <div class="input">
+                          <%= f.file_field :image %>
+                        </div>
+                  </div>
+
+                  <%= f.select(:public, ['public', 'connections',],{}, {:id => 'industryChooser-employeeCompany-employedProfileForm'})%>
+                  
                   <%= f.submit "Share", class: "accept" %>
                 <% end %>
             <%end%>
           </div>
 
-          <ol class="microposts">  
+          <ol class="microposts">
+
             <% @postsbyuser.each do |post| %>
-              <li>
+              
 
-                  
+                <% if current_user.friend_with? @user || current_user == @user %>
+                  <li>
+                      <%= link_to @user.userFname + " " + @user.userLname , @user , :class=>"name_style"%> 
+                      </br>
 
-                   <%= link_to @user.userFname + " " + @user.userLname , @user , :class=>"name_style"%> 
-                 </br>
+                      <span class="content"><%= post.content %></span>
 
-                <span class="content"><%= post.content %></span>
-              </br>
-                <span class="timestamp">
-                  Posted <%= time_ago_in_words(post.created_at) %> ago.
-                </span>
-              </li>
+                      </br>
+
+                    <% if post.image.present? %>
+                        <%= image_tag post.image_url.to_s , :class=>"post_image"%>
+                    <%end%>
+
+                    </br>
+                      <span class="timestamp">
+                        Posted <%= time_ago_in_words(post.created_at) %> ago.
+                      </span>
+                    </li>
+
+                  <% elsif current_user == @user  %>
+
+                    <li>
+                      <%= link_to @user.userFname + " " + @user.userLname , @user , :class=>"name_style"%> 
+                      </br>
+
+                      <span class="content"><%= post.content %></span>
+
+                      </br>
+
+                    <% if post.image.present? %>
+                        <%= image_tag post.image_url.to_s , :class=>"post_image"%>
+                    <%end%>
+
+                    </br>
+                      <span class="timestamp">
+                        Posted <%= time_ago_in_words(post.created_at) %> ago.
+                      </span>
+                    </li>
+
+                <% else %>
+
+                  <% if post.public == "public" %>                
+                    
+                    <%= link_to @user.userFname + " " + @user.userLname , @user , :class=>"name_style"%> 
+                      </br>
+
+                      <span class="content"><%= post.content %></span>
+
+                      </br>
+
+                    <% if post.image.present? %>
+                        <%= image_tag post.image_url.to_s , :class=>"post_image"%>
+                    <%end%>
+
+                    </br>
+                      <span class="timestamp">
+                        Posted <%= time_ago_in_words(post.created_at) %> ago.
+                      </span>
+                    </li>
+
+                  <%end%>
+                <%end%>
+
+
+              
             <%end%>
           </ol>
       </div>

@@ -50,7 +50,6 @@ class UsersController < Devise::RegistrationsController
   def friendrequests
     @users = User.all()
   end
-
   
   # PUT /users/1
   # PUT /users/1.json

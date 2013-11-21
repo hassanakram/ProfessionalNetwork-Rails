@@ -51,6 +51,8 @@ end
 # group :development, :test do
 #   gem 'webrat'
 # end
+
+gem "auto_html"
 gem 'omniauth-twitter'
 gem 'omniauth-facebook'
 gem 'omniauth-github'
