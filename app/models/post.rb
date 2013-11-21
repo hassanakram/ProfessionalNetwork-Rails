@@ -2,12 +2,13 @@ class Post < ActiveRecord::Base
 	
 	belongs_to :user 
 	
-	default_scope -> { order('created_at DESC') }
+	default_scope -> { order('created_at ASC') }
 
 	validates :user_id, presence: true
 
+	has_many :comments
 
-  attr_accessible :content, :user_id , :image , :public
+  attr_accessible :content, :user_id , :image , :public , :post_id
 
   mount_uploader :image, ImageUploader
 

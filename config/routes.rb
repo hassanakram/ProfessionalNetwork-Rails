@@ -1,6 +1,8 @@
 Bootstrap::Application.routes.draw do
 
   
+  
+
   resources :alumnisearches
   resources :advancesearches
 
@@ -23,6 +25,9 @@ Bootstrap::Application.routes.draw do
 
   resources :posts, only: [:create,:index , :destroy]
 
+  resources :posts do
+    resources :comments, :only => [:create]
+  end
 
   #devise_for :admin_users, ActiveAdmin::Devise.config
 

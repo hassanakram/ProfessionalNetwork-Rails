@@ -1,9 +1,12 @@
 <link rel="icon" href="favicon.ico" />
+    
     <link rel="stylesheet" type="text/css" href="/stylesheets/home.css">
     <link rel="stylesheet" type="text/css" href="/stylesheets/profile.css">
     <script src="/javascripts/home.js"></script>
     <script src="/javascripts/jquery.js"></script>
     <script src="/javascripts/advance_search.js"></script>
+
+    <% provide(:title, 'Profile') %>
 
 <%= render 'header_loggedin' %>
 
@@ -85,7 +88,6 @@
           <ol class="microposts">
 
             <% @postsbyuser.each do |post| %>
-              
 
                 <% if current_user.friend_with? @user || current_user == @user %>
                   <li>
@@ -104,7 +106,35 @@
                       <span class="timestamp">
                         Posted <%= time_ago_in_words(post.created_at) %> ago.
                       </span>
-                    </li>
+                  </li>
+
+
+                    <div class="comments">
+                      <% post.comments.each do |c| %>
+
+                        <div class="commenter_photo">
+                          <%= image_tag c.user.image_url(:small).to_s , :class => "commenter_pic"%>
+                        </div>
+
+                        <span class="content"><%= c.body %></span>                        
+
+                        </br>
+                        <span class="timestamp">
+                          Posted <%= time_ago_in_words(c.created_at) %> ago.
+                        </span>
+                        
+                      <%end%>
+
+                    </div>
+
+                    <%= form_for [post, Comment.new] do |f| %>
+                      <p>
+                              <%= f.label :body, "New comment" %><br/>
+                              <%= f.text_area :body %>
+                      </p>
+                      <p><%= f.submit "Add comment" %></p>
+
+                    <% end %>
 
                   <% elsif current_user == @user  %>
 
@@ -126,6 +156,33 @@
                       </span>
                     </li>
 
+                    <div class="comments">
+                      <% post.comments.each do |c| %>
+
+                        <div class="commenter_photo">
+                          <%= image_tag c.user.image_url(:small).to_s , :class => "commenter_pic"%>
+                        </div>
+
+                        <span class="content"><%= c.body %></span>                        
+
+                        </br>
+                        <span class="timestamp">
+                          Posted <%= time_ago_in_words(c.created_at) %> ago.
+                        </span>
+                        
+                      <%end%>
+
+                    </div>
+
+                    <%= form_for [post, Comment.new] do |f| %>
+                      <p>
+                              <%= f.label :body, "New comment" %><br/>
+                              <%= f.text_area :body %>
+                      </p>
+                      <p><%= f.submit "Add comment" %></p>
+                      
+                    <% end %>
+
                 <% else %>
 
                   <% if post.public == "public" %>                
@@ -146,6 +203,33 @@
                         Posted <%= time_ago_in_words(post.created_at) %> ago.
                       </span>
                     </li>
+
+                    <div class="comments">
+                      <% post.comments.each do |c| %>
+
+                        <div class="commenter_photo">
+                          <%= image_tag c.user.image_url(:small).to_s , :class => "commenter_pic"%>
+                        </div>
+
+                        <span class="content"><%= c.body %></span>                        
+
+                        </br>
+                        <span class="timestamp">
+                          Posted <%= time_ago_in_words(c.created_at) %> ago.
+                        </span>
+                        
+                      <%end%>
+
+                    </div>
+
+                    <%= form_for [post, Comment.new] do |f| %>
+                      <p>
+                              <%= f.label :body, "New comment" %><br/>
+                              <%= f.text_area :body %>
+                      </p>
+                      <p><%= f.submit "Add comment" %></p>
+                      
+                    <% end %>
 
                   <%end%>
                 <%end%>

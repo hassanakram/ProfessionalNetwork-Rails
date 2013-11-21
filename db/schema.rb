@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131120033530) do
+ActiveRecord::Schema.define(:version => 20131121134823) do
 
   create_table "advancesearches", :force => true do |t|
     t.string   "keywords"
@@ -55,6 +55,14 @@ ActiveRecord::Schema.define(:version => 20131120033530) do
     t.datetime "updated_at",   :null => false
   end
 
+  create_table "comments", :force => true do |t|
+    t.string   "body"
+    t.integer  "user_id"
+    t.integer  "post_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "feedbacks", :force => true do |t|
     t.string   "title"
     t.text     "body"
@@ -82,6 +90,7 @@ ActiveRecord::Schema.define(:version => 20131120033530) do
     t.datetime "updated_at", :null => false
     t.string   "image"
     t.string   "public"
+    t.integer  "post_id"
   end
 
   add_index "posts", ["user_id", "created_at"], :name => "index_posts_on_user_id_and_created_at"
