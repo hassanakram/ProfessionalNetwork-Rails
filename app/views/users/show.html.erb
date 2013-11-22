@@ -8,7 +8,7 @@
 
     <% provide(:title, 'Your Profile') %>
 
-<%= render 'header_loggedin' %>
+<%= render '/layouts/header_loggedin' %>
 
 <section>
     <div id="BodyWrapper">
@@ -55,13 +55,13 @@
         					     
         					     <%= button_to "Cancel Request", {:controller => :friendships, :action => :destroy, :user_id => @user }, :method => :delete ,:class => "reject" %>
         					<% elsif @user.invited? current_user  %>
-        					     <%= button_to "Accpet", {:controller => :friendships, :action => :update, :user_id => @user  }, :method => :put ,:class => "accept" %>
+        					     <%= button_to "Accpet", {:controller => :friendships, :action => :update, :user_id => @user  }, :method => :put ,:class => "acceptold" %>
         					     <%= button_to "Decline", {:controller => :friendships, :action => :destroy, :user_id => @user }, :method => :delete ,:class => "reject" %>
 
 
 
         					<% else %>
-        					     <%= button_to "Add Friend", friendships_path( :user_id => @user), :method => :post,:class => "accept" %>
+        					     <%= button_to "Add Friend", friendships_path( :user_id => @user), :method => :post,:class => "acceptold" %>
         					<% end %>
         				</div>
         				<% end %>
@@ -120,9 +120,12 @@
 
                         <div class="commenter_photo">
                           <%= image_tag c.user.image_url(:small).to_s , :class => "commenter_pic"%>
+
                         </div>
 
-                        <span class="commentsmall"><%= c.body %></span>                        
+                        <span class="commentsmall">
+                          <%= c.user.userFname + " " + c.user.userLname %><%= c.body %>
+                        </span>                        
 
                         
                         <span class="timestamp">

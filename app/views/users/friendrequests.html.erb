@@ -8,7 +8,7 @@
     <script src="/javascripts/advance_search.js"></script>
 
 <% provide(:title, 'Invitations') %>
-<%= render 'header_loggedin' %>
+<%= render '/layouts/header_loggedin' %>
 
 <section>
     <div id="BodyWrapper">
@@ -44,7 +44,7 @@
                     <div class="srp-actions blue-button">
                       <div class="primary-action-button">
                         <div id="actionlist">
-                          <%= button_to "Accept", friendship_path(user,:user_id => user.id), :method => :put , :class => "accept" %>
+                          <%= button_to "Accept", friendship_path(user,:user_id => user.id), :method => :put , :class => "acceptold" %>
                                 <%= button_to "Decline", friendship_path(user, :user_id =>  user.id), :method => :delete ,:class => "reject" %>
                               </div>
                       </div>

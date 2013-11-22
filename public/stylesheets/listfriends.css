@@ -22,7 +22,6 @@ box-shadow: inset 0 0 0 white,0 0 0 white,inset -9999px 0 0 white;
 -ms-background-origin: border-box;
 -o-background-origin: border-box;
 background-origin: border-box;
-border: 0 solid transparent;
 border-bottom-width: 1px;
 }
 

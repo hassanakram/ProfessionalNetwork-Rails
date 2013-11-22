@@ -1,8 +1,12 @@
 Bootstrap::Application.routes.draw do
 
+  get "/invites/:provider/contact_callback" => "invites#index"
+  get "/contacts/failure" => "invites#failure"
   
+  get "/invites/index"
+  get "/contacts/yahoo/callback"
   
-
+  resources :invites
   resources :alumnisearches
   resources :advancesearches
 

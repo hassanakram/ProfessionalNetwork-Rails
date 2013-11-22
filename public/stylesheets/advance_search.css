@@ -1092,3 +1092,24 @@ dd{
 	width: 40px;
 	height: 40px;
 }
+
+.newnew {
+background-color: #2672AE;
+box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
+font-weight: bold;
+border-width: 1px;
+border-style: solid;
+cursor: pointer;
+text-decoration: none;
+width: 100px;
+text-shadow: 0 1px 1px rgba(0, 0, 0, 0.35);
+-webkit-border-radius: 3px;
+-moz-border-radius: 3px;
+padding: 10px 0 0px 40px;
+height: 30px;
+font-size: 18px;
+color: white;
+border-color: #1B5480;
+display: block;
+margin: 20px 0 0px 25px;
+}

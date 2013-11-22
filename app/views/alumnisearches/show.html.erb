@@ -6,8 +6,8 @@
   <script src="/javascripts/jquery.js"></script>
   <script src="/javascripts/advance_search.js"></script>
   
-  <% provide(:title, 'Search') %>
-  <%= render 'header_loggedin' %>
+  <% provide(:title, 'Alumni Search') %>
+  <%= render '/layouts/header_loggedin' %>
 
 
   <section>
@@ -15,7 +15,7 @@
       <div id="MainBody">
         <div id="Search">
           <h2>
-            ADVANCE SEARCH
+            ALUMNI SEARCH
           </h2>
         </div>
         
@@ -55,10 +55,10 @@
                                
                                <%= button_to "Cancel Request", friendship_path(user, :user_id =>  user.id), :method => :delete ,:class => "reject" %>
                           <% elsif user.invited? current_user  %>
-                               <%= button_to "Accept", friendship_path(user,:user_id => user.id), :method => :put , :class => "accept" %>
+                               <%= button_to "Accept", friendship_path(user,:user_id => user.id), :method => :put , :class => "acceptold" %>
                                 <%= button_to "Decline", friendship_path(user, :user_id =>  user.id), :method => :delete ,:class => "reject" %>
                           <% else %>
-                               <%= button_to "Add Friend", friendships_path( :user_id => user), :method => :post,:class => "accept" %>
+                               <%= button_to "Add Friend", friendships_path( :user_id => user), :method => :post,:class => "acceptold" %>
                           <% end %>
                         <% end %>
                       <% end %>

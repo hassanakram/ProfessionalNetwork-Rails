@@ -7,7 +7,7 @@ source 'http://rubygems.org'
 gem 'rails','=3.2.3'
 #gem 'rails','>=3.0.0'
 
-ruby '1.9.3'
+ruby '1.9.2'
 
 group :assets do
   gem 'sass-rails',   '3.2.5'
@@ -52,13 +52,11 @@ end
 #   gem 'webrat'
 # end
 
-gem "auto_html"
 gem 'omniauth-twitter'
 gem 'omniauth-facebook'
 gem 'omniauth-github'
 gem 'oa-core'
 gem 'omniauth'
-#gem "strong_parameters"
 gem 'amistad'
 gem "rmagick"
 gem 'carrierwave'
@@ -70,10 +68,10 @@ gem 'rspec-rails'
 gem 'rspec'
 gem 'heroku'
 gem 'activeadmin'
-
+gem 'omnicontacts'
 
 gem 'hirb'
-
+gem 'localtunnel'
 #gem "rspec-rails", ">= 2.0.1", :group => [:development, :test]
 #gem "capybara", :group => [:development, :test]
 #gem 'twitter-bootstrap-rails', :git => 'https://github.com/seyhunak/twitter-bootstrap-rails.git'

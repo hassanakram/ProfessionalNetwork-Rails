@@ -10,8 +10,8 @@ def users
         users = User.order(:userFname)
         #users = users.where("email = ?", "#{education}") if education.present?
         users = users.where("universityEnd = ?", "#{enddate}") if enddate.present?
-        users = users.where("universityStart = ?", "#{startdate}") if start.present?
-        users = users.where("JobTitle LIKE ?", "%#{jobtitle}%") if jobtite.present?
+        users = users.where("universityStart = ?", "#{startdate}") if startdate.present?
+        #users = users.where("JobTitle LIKE ?", "%#{jobtitle}%") if jobtite.present?
         users = users.where("country = ?", "#{location}") if location.present?
         #users = users.where(" = ?", "#{startdate}") if startdate.present?
         #users = users.where("Company = ?", "#{skills}") if skills.present?
