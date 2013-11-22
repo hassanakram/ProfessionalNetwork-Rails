@@ -13,7 +13,7 @@
 						
 						<div id="advance_search">
 							<%= f.submit '', :name=>"search", :id=>"search", :class => "search_bar_button" %>
-							<a href="#">Advanced</a>
+							<a href="/advancesearches">Advanced</a>
 						</div>
 					<%end%>
 				</div>
@@ -70,9 +70,10 @@
 					<li class="notification_item" id="notifications"><a href="#"></a></li>
 					<li class="notification_item" id="add_connections"><a href="#"></a></li>
 					<li id="profile_actions">
-						<a id="profile_pic" href="#">
-							<%= image_tag current_user.image_url(:small).to_s %>
-						</a>
+						
+							
+							<%= link_to image_tag(current_user.image_url(:small).to_s), current_user ,:id=>"profile_pic" %>
+						
 						<div id="account_nav">
 							<div id="account_nav_options">
 								<div id="account_nav_header">
@@ -189,7 +190,9 @@
 					<%= link_to 'Home', '/home/index' , :class=>"nav-link" %>
 				</li>
 				<li id="profile_nav" class="nav_item">
-					<a id="profile" href="#" class="nav_link">Profile</a>
+					
+					<%= link_to "Profile" , current_user , :class=> "nav_link" , :id=> "Profile" %>
+
 					<ul id="profile_sub_nav" class="sub_nav">
 						<li class="nav_item">
 							<%= link_to "Edit Profile", '/users/edit'  , :class=>"nav-link"%> 

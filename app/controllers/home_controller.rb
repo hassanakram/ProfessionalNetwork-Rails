@@ -4,6 +4,7 @@ class HomeController < ApplicationController
   
 
   def index
+    @post = current_user.posts.build if signed_in?
     @posts=Post.all
   end
 

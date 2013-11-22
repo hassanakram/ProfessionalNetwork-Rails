@@ -1,7 +1,146 @@
 
 <link rel="stylesheet" type="text/css" href="/stylesheets/home.css">
+<link rel="stylesheet" type="text/css" href="/stylesheets/new_feed.css">
+
 <script src="/javascripts/home.js"></script>
 	
 	<% provide(:title, 'Welcome!') %>
 	
 	<%= render 'header_loggedin' %>
+
+
+	<div class="activity">
+            <h2>Activity</h2>
+          <div class="createPost">
+            
+                <%= form_for(@post) do |f| %>
+                  
+                  <div class="field">
+                    <%= f.text_area :content, placeholder: "Share an update..." ,:class=>"post_text_area" %>
+                  </div>
+                  
+                  <div class="clearfix">
+                        <div class="input">
+                          <%= f.file_field :image , :class=>"post aselect" %>
+                        </div>
+                  </div>
+
+                  <%= f.select(:public, ['Public', 'Connections',],{}, :class => "post_public bselect")%>
+                  
+                  <%= f.submit "Share", class: "accept" %>
+                <% end %>
+            
+          </div>
+
+          <ol class="microposts">
+            
+            <% @posts.each do |post| %>
+            
+                <% if current_user.friend_with? post.user %>
+                <li>      
+                  <h1><%= link_to post.user.userFname + " " + post.user.userLname , post.user , :class=>""%></h1> 
+                      </br>
+                  <span class="content"><%= post.content %></span>
+
+                      
+
+                    <% if post.image.present? %>
+                        <%= image_tag post.image_url.to_s , :class=>"post_image"%>
+                    <%end%>
+
+                    
+                      <span class="timestamp">
+                        Posted <%= time_ago_in_words(post.created_at) %> ago.
+                      </span>
+                  
+
+
+                    <div class="comments">
+                      <% post.comments.each do |c| %>
+
+                        <div class="commenter_photo">
+                          <%= image_tag c.user.image_url(:small).to_s , :class => "commenter_pic"%>
+                        </div>
+
+                        <span class="commentsmall"><%= c.body %></span>                        
+
+                        
+                        <span class="timestamp">
+                          Posted <%= time_ago_in_words(c.created_at) %> ago.
+                        </span>
+                      
+                      
+                      <%end%>
+
+                    </div>
+
+                    <%= form_for [post, Comment.new] do |f| %>
+                      <p class="new">
+                             
+                              <%= f.text_area :body, :class=>"newcomment" %>
+                    <%= f.submit "Add comment" ,:class=>"cselect" %></p>
+                      
+                    <% end %>
+                  </li>
+
+
+                  <% elsif current_user == post.user  %>
+
+                    <li>
+                      <%= link_to post.user.userFname + " " + post.user.userLname , post.user , :class=>"name_style"%> 
+                      
+
+                      <span class="content"><%= post.content %></span>
+
+                      
+
+                    <% if post.image.present? %>
+                        <%= image_tag post.image_url.to_s , :class=>"post_image"%>
+                    <%end%>
+
+                    
+                      <span class="timestamp">
+                        Posted <%= time_ago_in_words(post.created_at) %> ago.
+                      </span>
+
+                    <br/>
+
+                    <div class="comments">
+                      <% post.comments.each do |c| %>
+
+                        <div class="commenter_photo">
+                          <%= image_tag c.user.image_url(:small).to_s , :class => "commenter_pic"%>
+                        </div>
+
+                        <span class="commentsmall"><%= c.body %></span>                        
+
+                        
+                        <span class="timestamp">
+                          Posted <%= time_ago_in_words(c.created_at) %> ago.
+                        </span>
+                      
+                      
+                      <%end%>
+
+                    </div>
+
+                    <%= form_for [post, Comment.new] do |f| %>
+                      <p class="new">
+                             
+                              <%= f.text_area :body, :class=>"newcomment" %>
+                      <%= f.submit "Add comment" ,:class=>"cselect" %></p>
+                      
+                    <% end %>
+                  </li>
+
+                
+                <%end%>
+
+              
+              </li>  
+            <%end%>
+            
+          </ol>
+        </div>
+
+    

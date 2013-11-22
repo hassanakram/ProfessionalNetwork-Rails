@@ -1,29 +1,26 @@
-<h1>Listing advancesearches</h1>
+<link rel="stylesheet" type="text/css" href="/stylesheets/advance_search.css">
+  <link rel="stylesheet" type="text/css" href="/stylesheets/home.css">
+  <link rel="stylesheet" type="text/css" href="/stylesheets/listfriends.css">
+  <script src="/javascripts/home.js"></script>
+  <script src="/javascripts/advance_search.js"></script>
+  
+  <% provide(:title, 'Search') %>
+  <%= render 'header_loggedin' %>
 
-<table>
-  <tr>
-    <th>Keywords</th>
-    <th>User fname</th>
-    <th>User lname</th>
-    <th>Company</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
 
-<% @advancesearches.each do |advancesearch| %>
-  <tr>
-    <td><%= advancesearch.keywords %></td>
-    <td><%= advancesearch.user_fname %></td>
-    <td><%= advancesearch.user_lname %></td>
-    <td><%= advancesearch.company %></td>
-    <td><%= link_to 'Show', advancesearch %></td>
-    <td><%= link_to 'Edit', edit_advancesearch_path(advancesearch) %></td>
-    <td><%= link_to 'Destroy', advancesearch, confirm: 'Are you sure?', method: :delete %></td>
-  </tr>
-<% end %>
-</table>
-
-<br />
-
-<%= link_to 'New Advancesearch', new_advancesearch_path %>
+  <section>
+    <div id="BodyWrapper">
+      <div id="MainBody">
+        <div id="Search">
+          <h2>
+            ADVANCE SEARCH
+          </h2>
+        </div>
+        
+        <div id="facets-col">
+          <div id="advs">
+            <%= render 'form' %>
+          </div>
+        </div>
+        
+  </section>

@@ -194,10 +194,11 @@
                   </li>
 
                 <% else %>
-                <li>
+                
 
                   <% if post.public == "public" %>                
-                    
+                  
+                  <li>    
                     <%= link_to @user.userFname + " " + @user.userLname , @user , :class=>"name_style"%> 
                       </br>
 
@@ -243,10 +244,12 @@
                     <% end %>
 
                   <%end%>
+                
+                  </li>
                 <%end%>
 
               
-              </li>  
+                
             <%end%>
             
           </ol>
