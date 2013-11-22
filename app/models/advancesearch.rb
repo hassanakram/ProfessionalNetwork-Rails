@@ -8,7 +8,7 @@ class Advancesearch < ActiveRecord::Base
     
     def find_users
         users = User.order(:userFname)
-        users = users.where("email LIKE? OR userFname LIKE? OR userLname LIKE? OR country LIKE? OR Industry LIKE? OR JobTitle LIKE? OR Company LIKE? OR University LIKE? ", "%#{keywords}%", "%#{keywords}%", "%#{keywords}%", "%#{keywords}%", "%#{keywords}%", "%#{keywords}%", "%#{keywords}%", "%#{keywords}%") if keywords.present?
+        users = users.where("email LIKE? OR \"userFname\" LIKE? OR \"userLname\" LIKE? OR country LIKE? OR Industry LIKE? OR JobTitle LIKE? OR Company LIKE? OR University LIKE? ", "%#{keywords}%", "%#{keywords}%", "%#{keywords}%", "%#{keywords}%", "%#{keywords}%", "%#{keywords}%", "%#{keywords}%", "%#{keywords}%") if keywords.present?
         users = users.where("email = ?", "#{email}") if email.present?
         users = users.where("userFname = ?", "#{fname}") if fname.present?
         users = users.where("userLname = ?", "#{lname}") if lname.present?
