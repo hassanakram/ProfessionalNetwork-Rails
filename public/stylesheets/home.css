@@ -508,29 +508,28 @@ div.about_sender a{
 }
 
 
-.accept{
-	background-color: #2672ae;
-	box-shadow: 0 1px 3px rgba(0,0,0,0.25);
-	font-weight: bold;
-	border-width: 1px;
-	border-style: solid;
-	cursor: pointer;
-	text-decoration: none;
-	width: auto;
-	text-shadow: 0 1px 1px rgba(0,0,0,0.35);
-	-webkit-border-radius: 3px;
-	-moz-border-radius: 3px;
-	padding: 0 10px;
-	height: 26px;
-	line-height: 24px;
-	font-size: 12px;
-	color: #fff;
-	border-color: #1b5480;
-	display: inline-block;
-	margin: 6px 5px 0 17px;
-	float: left;
+.accept {
+background-color: #2672AE;
+box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
+font-weight: bold;
+border-width: 1px;
+border-style: solid;
+cursor: pointer;
+text-decoration: none;
+width: 180px;
+text-shadow: 0 1px 1px rgba(0, 0, 0, 0.35);
+-webkit-border-radius: 3px;
+-moz-border-radius: 3px;
+padding: 0 10px;
+height: 30px;
+line-height: 30px;
+font-size: 16px;
+color: white;
+border-color: #1B5480;
+display: inline-block;
+margin: 6px 5px 0 17px;
+float: left;
 }
-
 
 .accept:hover{
 	background-color: #1e4f7e;
@@ -815,3 +814,5 @@ ul#business_nav{
 #last{
 	margin-right: 0;
 }
+
+

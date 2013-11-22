@@ -6,13 +6,15 @@
     <script src="/javascripts/jquery.js"></script>
     <script src="/javascripts/advance_search.js"></script>
 
-    <% provide(:title, 'Profile') %>
+    <% provide(:title, 'Your Profile') %>
 
 <%= render 'header_loggedin' %>
 
 <section>
     <div id="BodyWrapper">
       <div id="MainBody">
+
+    
         <div id="results_col">
           <div id="results_count" class="mod results_count">
             
@@ -29,16 +31,21 @@
               <div class="country_etc"> <%= @user.country %> | <%= @user.Industry %> </div>
             </div>
 
+            <br/><br /><br/><br /><br/>
+            
+            <a class="button-secondary edit-profile" href="#">Edit Profile</a>
+            
+
             <div class="member-connections">
               <strong>
                 <a href="/home/default" class="connections-link"> <%=@user.friends.count %> </a> </br>
               </strong>
               connections
             </div>
+            <br />
 
 
-
-			      <p id="notice"><%= notice %></p>
+            			      
         			<% if user_signed_in? %>
         				<% if current_user != @user %>
         				<div class="relation_status">
@@ -46,7 +53,7 @@
         					     <%= button_to "Remove Friend", {:controller => :friendships, :action => :destroy, :user_id => @user }, :method => :delete ,:class => "reject" %>
         					<% elsif current_user.invited? @user  %>
         					     
-        					     <%= button_to "Cencel Request", {:controller => :friendships, :action => :destroy, :user_id => @user }, :method => :delete ,:class => "reject" %>
+        					     <%= button_to "Cancel Request", {:controller => :friendships, :action => :destroy, :user_id => @user }, :method => :delete ,:class => "reject" %>
         					<% elsif @user.invited? current_user  %>
         					     <%= button_to "Accpet", {:controller => :friendships, :action => :update, :user_id => @user  }, :method => :put ,:class => "accept" %>
         					     <%= button_to "Decline", {:controller => :friendships, :action => :destroy, :user_id => @user }, :method => :delete ,:class => "reject" %>
@@ -74,11 +81,11 @@
                   
                   <div class="clearfix">
                         <div class="input">
-                          <%= f.file_field :image %>
+                          <%= f.file_field :image , :class=>"post aselect" %>
                         </div>
                   </div>
 
-                  <%= f.select(:public, ['public', 'connections',],{}, {:id => 'industryChooser-employeeCompany-employedProfileForm'})%>
+                  <%= f.select(:public, ['Public', 'Connections',],{}, :class => "post_public bselect")%>
                   
                   <%= f.submit "Share", class: "accept" %>
                 <% end %>
@@ -86,27 +93,26 @@
           </div>
 
           <ol class="microposts">
-
+            
             <% @postsbyuser.each do |post| %>
-
+            
                 <% if current_user.friend_with? @user || current_user == @user %>
-                  <li>
-                      <%= link_to @user.userFname + " " + @user.userLname , @user , :class=>"name_style"%> 
+                <li>      
+                  <h1><%= link_to @user.userFname + " " + @user.userLname , @user , :class=>""%></h1> 
                       </br>
+                  <span class="content"><%= post.content %></span>
 
-                      <span class="content"><%= post.content %></span>
-
-                      </br>
+                      
 
                     <% if post.image.present? %>
                         <%= image_tag post.image_url.to_s , :class=>"post_image"%>
                     <%end%>
 
-                    </br>
+                    
                       <span class="timestamp">
                         Posted <%= time_ago_in_words(post.created_at) %> ago.
                       </span>
-                  </li>
+                  
 
 
                     <div class="comments">
@@ -116,45 +122,48 @@
                           <%= image_tag c.user.image_url(:small).to_s , :class => "commenter_pic"%>
                         </div>
 
-                        <span class="content"><%= c.body %></span>                        
+                        <span class="commentsmall"><%= c.body %></span>                        
 
-                        </br>
+                        
                         <span class="timestamp">
                           Posted <%= time_ago_in_words(c.created_at) %> ago.
                         </span>
-                        
+                      
+                      
                       <%end%>
 
                     </div>
 
                     <%= form_for [post, Comment.new] do |f| %>
-                      <p>
-                              <%= f.label :body, "New comment" %><br/>
-                              <%= f.text_area :body %>
-                      </p>
-                      <p><%= f.submit "Add comment" %></p>
-
+                      <p class="new">
+                             
+                              <%= f.text_area :body, :class=>"newcomment" %>
+                      <%= f.submit "Add comment" ,:class=>"cselect" %></p>
+                      
                     <% end %>
+                  </li>
+
 
                   <% elsif current_user == @user  %>
 
                     <li>
                       <%= link_to @user.userFname + " " + @user.userLname , @user , :class=>"name_style"%> 
-                      </br>
+                      
 
                       <span class="content"><%= post.content %></span>
 
-                      </br>
+                      
 
                     <% if post.image.present? %>
                         <%= image_tag post.image_url.to_s , :class=>"post_image"%>
                     <%end%>
 
-                    </br>
+                    
                       <span class="timestamp">
                         Posted <%= time_ago_in_words(post.created_at) %> ago.
                       </span>
-                    </li>
+
+                    <br/>
 
                     <div class="comments">
                       <% post.comments.each do |c| %>
@@ -163,27 +172,29 @@
                           <%= image_tag c.user.image_url(:small).to_s , :class => "commenter_pic"%>
                         </div>
 
-                        <span class="content"><%= c.body %></span>                        
+                        <span class="commentsmall"><%= c.body %></span>                        
 
-                        </br>
+                        
                         <span class="timestamp">
                           Posted <%= time_ago_in_words(c.created_at) %> ago.
                         </span>
-                        
+                      
+                      
                       <%end%>
 
                     </div>
 
                     <%= form_for [post, Comment.new] do |f| %>
-                      <p>
-                              <%= f.label :body, "New comment" %><br/>
-                              <%= f.text_area :body %>
-                      </p>
-                      <p><%= f.submit "Add comment" %></p>
+                      <p class="new">
+                             
+                              <%= f.text_area :body, :class=>"newcomment" %>
+                      <%= f.submit "Add comment" ,:class=>"cselect" %></p>
                       
                     <% end %>
+                  </li>
 
                 <% else %>
+                <li>
 
                   <% if post.public == "public" %>                
                     
@@ -192,17 +203,17 @@
 
                       <span class="content"><%= post.content %></span>
 
-                      </br>
+                      
 
                     <% if post.image.present? %>
                         <%= image_tag post.image_url.to_s , :class=>"post_image"%>
                     <%end%>
 
-                    </br>
+                    
                       <span class="timestamp">
                         Posted <%= time_ago_in_words(post.created_at) %> ago.
                       </span>
-                    </li>
+                    
 
                     <div class="comments">
                       <% post.comments.each do |c| %>
@@ -211,45 +222,37 @@
                           <%= image_tag c.user.image_url(:small).to_s , :class => "commenter_pic"%>
                         </div>
 
-                        <span class="content"><%= c.body %></span>                        
+                        <span class="commentsmall"><%= c.body %></span>                        
 
-                        </br>
+                        
                         <span class="timestamp">
                           Posted <%= time_ago_in_words(c.created_at) %> ago.
                         </span>
-                        
+                      
+                      
                       <%end%>
 
                     </div>
 
                     <%= form_for [post, Comment.new] do |f| %>
-                      <p>
-                              <%= f.label :body, "New comment" %><br/>
-                              <%= f.text_area :body %>
-                      </p>
-                      <p><%= f.submit "Add comment" %></p>
+                      <p class="new">
+                             
+                              <%= f.text_area :body, :class=>"newcomment" %>
+                      <%= f.submit "Add comment" ,:class=>"cselect" %></p>
                       
                     <% end %>
 
                   <%end%>
                 <%end%>
 
-
               
+              </li>  
             <%end%>
+            
           </ol>
-      </div>
-          
         </div>
-
-
-
-        
-
       </div>
-      
-
-
     </div>
-  </section>
+  </div>
+</section>
 
