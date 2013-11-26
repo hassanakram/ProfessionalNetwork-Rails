@@ -51,7 +51,7 @@ end
 # group :development, :test do
 #   gem 'webrat'
 # end
-
+gem 'sanitize'
 gem 'omniauth-twitter'
 gem 'omniauth-facebook'
 gem 'omniauth-github'

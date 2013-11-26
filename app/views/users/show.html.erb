@@ -86,13 +86,15 @@
                   <div class="field">
                     <%= f.text_area :content, placeholder: "Share an update..." ,:class=>"post_text_area" %>
                   </div>
+
+
                   
                   <div class="clearfix">
                       <div class="input">
                         <%= f.file_field :image , :class=>"post aselect" %>
                       </div>
                       <div class="liveurl-loader"></div>
-      
+                    <div class="liveurlparent">
                         <div class="liveurl">
                             <div class="close" title="Entfernen"></div>
                             <div class="inner">
@@ -101,7 +103,7 @@
                                     <div class="info">
                                         <div class="title"> </div>
                                         <div class="description"> </div> 
-                                        <div class="url"> </div>
+                                        <div class="url"></div>
                                     </div>
 
                                     <div class="thumbnail">
@@ -120,11 +122,14 @@
 
                             </div>
                         </div>
+                      </div>
                   </div>
 
                   <%= f.select(:public, ['Public', 'Connections',],{}, :class => "post_public bselect")%>
                   
-                  <%= f.submit "Share", class: "accept" %>
+                  <%= f.hidden_field :linkdescription, :id => "link_details" %>
+
+                  <%= f.submit "Share", :onclick => "return validat_link();"  , class: "accept" %>
                 
                 <% end %>
             <%end%>
@@ -138,9 +143,13 @@
                 <li>      
                   <h1><%= link_to @user.userFname + " " + @user.userLname , @user , :class=>""%></h1> 
                       </br>
-                  <span class="content"><%= post.content %></span>
+                  <span class="content"><%= strip_tags(post.content) %></span>
 
-                      
+                      <% if post.linkdescription != "" %>
+                        <div class="urldescription">
+                            <%= post.linkdescription %>
+                        </div>
+                      <%end%>
 
                     <% if post.image.present? %>
                         <%= image_tag post.image_url.to_s , :class=>"post_image"%>
@@ -193,9 +202,17 @@
                       <%= link_to @user.userFname + " " + @user.userLname , @user , :class=>"name_style"%> 
                       
 
-                      <span class="content"><%= post.content %></span>
+                      <span class="content"><%= strip_tags(post.content) %></span>
 
-                      
+                      <% if post.linkdescription != "" %>
+                        <!--<div class="urldescription"></div>
+                        <script type="text/javascript">
+                          $( ".urldescription" ).append( "'" + <%= raw post.linkdescription %> + "'");
+                        </script> -->
+
+                        <%= raw post.linkdescription %>
+
+                      <%end%>
 
                     <% if post.image.present? %>
                         <%= image_tag post.image_url.to_s , :class=>"post_image"%>
@@ -247,7 +264,7 @@
                     <%= link_to @user.userFname + " " + @user.userLname , @user , :class=>"name_style"%> 
                       </br>
 
-                      <span class="content"><%= post.content %></span>
+                      <span class="content"><%= strip_tags(post.content) %></span>
 
                       
 
@@ -308,6 +325,21 @@
   </div>
 
   <script> 
+
+
+              function validat_link()
+              {
+                
+                
+                
+                if($('.url').text()!="")
+                {
+                    document.getElementById('link_details').value =$.trim($('.liveurlparent').html()).replace(/[\n\r\t]/g, "");
+                  
+                }
+                return true;
+              }
+
 
                 var curImages = new Array();
                 
